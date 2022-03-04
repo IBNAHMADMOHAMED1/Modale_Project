@@ -1,11 +1,22 @@
 <template>
-
+<div>
+ 
 <h1>{{title}}</h1>
- <Modal  header="sing up for give" text="Grab your loren" theme="sale"/>
+ <p> welcome ..</p>
+<div v-if="showModal">
+  <Modal  header="sing up for give" text="Grab your loren" theme="sale" @close='toggel'>
+    <template v-slot:link>
+      <a href="#">sing up</a> 
+      <a href="#">more</a>
+    </template>
+  <p>Giv your</p>
+  <p>lorem ipsum dolor sit amet</p>
+  </Modal>
+</div>
+<button @click.alt="toggel()">Open Modal</button>
+</div>
 
-   
-
-
+ 
 </template>
 
 <script>
@@ -15,7 +26,15 @@ export default {
   components:{Modal},
   data() {
     return {
-      title: 'mt vue app'
+      title: 'Hi vue app',
+      showModal: false,
+      
+    }
+  },
+  methods: {
+    toggel() {
+      this.showModal=!this.showModal
+
     }
   }
    
